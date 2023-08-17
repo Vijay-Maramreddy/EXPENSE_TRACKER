@@ -19,7 +19,7 @@ class _ExpensesState extends State<Expenses>{
     Expense(amount: 15.99, title: 'movie', date: DateTime.now(), category: Category.leisure),
   ];
   void _openAddExpenseOverlay(){
-    showModalBottomSheet(context: context, builder: (ctx)=>NewExpense(onAddExpense:_addExpense),);
+    showModalBottomSheet(isScrollControlled: true,context: context, builder: (ctx)=>NewExpense(onAddExpense:_addExpense),);
   }
   void _addExpense(Expense expense){
     setState(() {

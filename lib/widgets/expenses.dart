@@ -7,6 +7,7 @@ import 'package:expense_tracker/widgets/new_expense.dart';
 class Expenses extends StatefulWidget{
   const Expenses({super.key});
 
+
   @override
   State<Expenses> createState(){
     return _ExpensesState();
@@ -18,7 +19,12 @@ class _ExpensesState extends State<Expenses>{
     Expense(amount: 15.99, title: 'movie', date: DateTime.now(), category: Category.leisure),
   ];
   void _openAddExpenseOverlay(){
-    showModalBottomSheet(context: context, builder: (ctx)=>const NewExpense(),);
+    showModalBottomSheet(context: context, builder: (ctx)=>NewExpense(onAddExpense:_addExpense),);
+  }
+  void _addExpense(Expense expense){
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
   }
 
   @override
